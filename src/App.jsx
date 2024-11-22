@@ -3,6 +3,7 @@ import { useState } from 'react'
 // import viteLogo from '/vite.svg'
 import './App.css'
 import Start from './Start'
+import Basics from './own/Basics'
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
     // </>
 
     <>
-      <Start/>
+      <Basics/>
     </>
   )
 }
