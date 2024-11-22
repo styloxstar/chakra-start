@@ -2,6 +2,7 @@ import { Grid, GridItem, Text } from '@chakra-ui/react'
 import React from 'react'
 import FlexNavbar from './FlexNavbar'
 import GridComponent from './GridComponent'
+import Sidebar from './Sidebar'
 
 const MainGrid = () => {
   return (
@@ -13,7 +14,10 @@ const MainGrid = () => {
         minH={{lg:"100vh"}} 
         p={{base:"20px", lg: "30px"}}
         >
-        <Text color="black">Sidebar</Text>
+        {/* <Text color="black">Sidebar</Text>
+         */}
+
+         <Sidebar/>
       </GridItem>
 
       <GridItem
