@@ -4,6 +4,7 @@ import { useState } from 'react'
 import './App.css'
 import Start from './Start'
 import Basics from './own/Basics'
+import FlexNavbar from './own/FlexNavbar'
 
 
 function App() {
@@ -34,7 +35,9 @@ function App() {
     // </>
 
     <>
-      <Basics/>
+      {/* <Basics/> */}
+
+      <FlexNavbar/>
     </>
   )
 }
