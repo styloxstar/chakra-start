@@ -23,7 +23,7 @@ const FlexNavbar = () => {
             M
         </Box>
 
-        <Text>
+        <Text color="black">
             gautamd35@gmail.com
         </Text>
         <Button colorPalette="purple">

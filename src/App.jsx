@@ -5,6 +5,8 @@ import './App.css'
 import Start from './Start'
 import Basics from './own/Basics'
 import FlexNavbar from './own/FlexNavbar'
+import GridComponent from './own/GridComponent'
+import MainGrid from './own/MainGrid'
 
 
 function App() {
@@ -37,7 +39,11 @@ function App() {
     <>
       {/* <Basics/> */}
 
-      <FlexNavbar/>
+      {/* <FlexNavbar/> */}
+
+      {/* <GridComponent/> */}
+
+      <MainGrid/>
     </>
   )
 }
