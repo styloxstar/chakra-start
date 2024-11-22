@@ -8,17 +8,17 @@ const MainGrid = () => {
     <Grid templateColumns={"repeat(6,1fr)"} bg="gray.50">
       <GridItem 
         as="aside" 
-        colSpan={1} 
+        colSpan={{base:6, lg:2, xl:1}} 
         bg="purple.400" 
-        minH={"100vh"} 
-        p="30px"
+        minH={{lg:"100vh"}} 
+        p={{base:"20px", lg: "30px"}}
         >
         <Text color="black">Sidebar</Text>
       </GridItem>
 
       <GridItem
         as="main"
-        colSpan={5}
+        colSpan={{base:6, lg:4, xl:5}} 
       >
         <FlexNavbar />
         <GridComponent />
