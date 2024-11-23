@@ -3,6 +3,7 @@ import React from 'react'
 import FlexNavbar from './FlexNavbar'
 import GridComponent from './GridComponent'
 import Sidebar from './Sidebar'
+import TabsComponent from './TabsComponent'
 
 const MainGrid = () => {
   return (
@@ -24,6 +25,8 @@ const MainGrid = () => {
         as="main"
         colSpan={{base:6, lg:4, xl:5}} 
       >
+
+      <TabsComponent/>
         <FlexNavbar />
         <GridComponent />
       </GridItem>

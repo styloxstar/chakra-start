@@ -3,6 +3,7 @@ import React from 'react'
 import data from "../../data/db.json"
 import { FaEye } from 'react-icons/fa'
 import { FaPencil } from 'react-icons/fa6'
+import TabsComponent from './TabsComponent'
 
 const GridComponent = () => {
 
@@ -27,6 +28,8 @@ const GridComponent = () => {
         <Box bg="purple.200" h="200px" border="1px solid"></Box>
         <Box bg="purple.200" h="200px" border="1px solid"></Box>
         <Box bg="purple.200" h="200px" border="1px solid"></Box> */}
+
+        
 
             {
                 data.tasks && data.tasks.map((taskData, i)=>(
