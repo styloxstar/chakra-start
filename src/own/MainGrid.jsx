@@ -5,6 +5,7 @@ import GridComponent from './GridComponent'
 import Sidebar from './Sidebar'
 import TabsComponent from './TabsComponent'
 import AccordionComponent from './AccordionComponent'
+import DialogModal from './DialogModal'
 
 const MainGrid = () => {
   return (
@@ -30,6 +31,7 @@ const MainGrid = () => {
       <TabsComponent/>
 
       <AccordionComponent/>
+      <DialogModal/>
         <FlexNavbar />
         <GridComponent />
       </GridItem>
