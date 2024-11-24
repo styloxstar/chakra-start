@@ -7,6 +7,7 @@ import Basics from './own/Basics'
 import FlexNavbar from './own/FlexNavbar'
 import GridComponent from './own/GridComponent'
 import MainGrid from './own/MainGrid'
+import TabsComponent from './own/TabsComponent'
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
       {/* <GridComponent/> */}
 
       <MainGrid/>
+      {/* <TabsComponent/> */}
     </>
   )
 }

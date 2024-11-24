@@ -3,25 +3,18 @@ import React from 'react'
 
 const TabsComponent = () => {
   return (
-    <TabsRoot>
-      <TabsList>
-        <TabsTrigger __selected={{ bg: 'purple.400'}} value='tab-1'>account</TabsTrigger>
-
+    <TabsRoot lazyMount unmountOnExit defaultValue="tab-1" p="6" variant={"outline"} >
+      <TabsList  >
+        <TabsTrigger _selected={{fontWeight:"bold", textShadow:"3px -2px 2px gray"}}  color={{base: "black", __dark:"white"}}  value='tab-1'>account</TabsTrigger>
+        <TabsTrigger _selected={{fontWeight:"bold", textShadow:"3px -2px 2px gray"}}  color={{base: "black", __dark:"white"}} value='tab-2'>Setting</TabsTrigger>
       </TabsList>
 
-      <TabsList>
-        <TabsTrigger __selected={{ bg: 'purple.400'}} value='tab-2'>Setting</TabsTrigger>
-
-      </TabsList>
-
-      <TabsContent value='tab1'>
+      <TabsContent value='tab-1' color={{base: "black", __dark:"white"}}>
           Account Name
-
       </TabsContent>
 
-      <TabsContent value='tab2'>
+      <TabsContent value='tab-2' color={{base: "black", __dark:"white"}}>
           Setting Name
-
       </TabsContent>
     </TabsRoot>
   )
