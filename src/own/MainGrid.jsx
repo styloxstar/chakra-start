@@ -6,6 +6,7 @@ import Sidebar from './Sidebar'
 import TabsComponent from './TabsComponent'
 import AccordionComponent from './AccordionComponent'
 import DialogModal from './DialogModal'
+import StepComponent from './StepComponent'
 
 const MainGrid = () => {
   return (
@@ -30,10 +31,13 @@ const MainGrid = () => {
 
       <TabsComponent/>
 
-      <AccordionComponent/>
-      <DialogModal/>
-        <FlexNavbar />
-        <GridComponent />
+      {/* <AccordionComponent/> */}
+      {/* <DialogModal/> */}
+        
+      {/* its important to use step component from local snippet by installing them */}
+      {/* <StepComponent/>   */}
+        {/* <FlexNavbar />
+        <GridComponent /> */}
       </GridItem>
     </Grid>
   );

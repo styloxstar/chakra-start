@@ -10,7 +10,7 @@ const FlexNavbar = () => {
     //     <Box w="150px" h="50px" bg="yellow" flexGrow={2}>4</Box>
     // </Flex>
 
-    <Flex as="nav" p="10px" alignItems={"center"} >
+    <Flex as="nav" p="5px" alignItems={"center"} shadow={"md"} borderRadius={"md"}>
         <Heading as="h1">Task</Heading>
         <Spacer/>
 

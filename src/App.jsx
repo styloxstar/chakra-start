@@ -8,6 +8,7 @@ import FlexNavbar from './own/FlexNavbar'
 import GridComponent from './own/GridComponent'
 import MainGrid from './own/MainGrid'
 import TabsComponent from './own/TabsComponent'
+import StepComponent from './own/StepComponent'
 
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
       {/* <GridComponent/> */}
 
       <MainGrid/>
+
+      {/* <StepComponent/> */}
       {/* <TabsComponent/> */}
     </>
   )
