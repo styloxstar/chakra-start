@@ -9,6 +9,9 @@ import GridComponent from './own/GridComponent'
 import MainGrid from './own/MainGrid'
 import TabsComponent from './own/TabsComponent'
 import StepComponent from './own/StepComponent'
+import { Toaster } from './components/ui/toaster'
+// import { Toaster } from './components/ui/toaster'
+
 
 
 function App() {
@@ -39,6 +42,7 @@ function App() {
     // </>
 
     <>
+    <Toaster/>
       {/* <Basics/> */}
 
       {/* <FlexNavbar/> */}

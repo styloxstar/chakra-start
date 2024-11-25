@@ -5,6 +5,7 @@ import DialogModal from './DialogModal'
 import FlexNavbar from './FlexNavbar'
 import GridComponent from './GridComponent'
 import StepComponent from './StepComponent'
+import Forms from './Forms'
 
 const TabsComponent = () => {
   return (
@@ -13,6 +14,7 @@ const TabsComponent = () => {
         <TabsTrigger _selected={{fontWeight:"bold", textShadow:"3px -1px 6px gray"}}  color={{base: "black", __dark:"white"}} value='tab-1'>Navbar And Grid</TabsTrigger>
         <TabsTrigger _selected={{fontWeight:"bold", textShadow:"3px -1px 6px gray"}}  color={{base: "black", __dark:"white"}}  value='tab-2'>Accordion</TabsTrigger>
         <TabsTrigger _selected={{fontWeight:"bold", textShadow:"3px -1px 6px gray"}}  color={{base: "black", __dark:"white"}} value='tab-3'>Dialog Modal</TabsTrigger>
+        <TabsTrigger _selected={{fontWeight:"bold", textShadow:"3px -1px 6px gray"}}  color={{base: "black", __dark:"white"}} value='tab-4'>Forms</TabsTrigger>
 
       </TabsList>
 
@@ -29,6 +31,12 @@ const TabsComponent = () => {
        <DialogModal/>
        <StepComponent/>
       </TabsContent>
+
+      <TabsContent value='tab-4' color={{base: "black", __dark:"white"}}>
+       <Forms/>
+      </TabsContent>
+
+
     </TabsRoot>
   )
 }
