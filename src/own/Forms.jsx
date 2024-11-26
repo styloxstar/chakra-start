@@ -4,11 +4,13 @@ import { Button, Fieldset, FieldsetContent, FieldsetErrorText, FieldsetHelperTex
 import {toaster, Toaster } from "../components/ui/toaster"
 
 import {Field} from "../components/ui/field"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import {toast} from "./Common"
+import { HiUpload } from "react-icons/hi"
 
-
+import {FileUploadList,  FileUploadRoot,
+  FileUploadTrigger,} from "../components/ui/file-upload"
 
 
 
@@ -21,16 +23,21 @@ const Forms = () => {
         language: "",
         languageValidation: false,
         invalid: false,
+        upload: "",
     })
+
+    const [files, setFiles] = useState([])
+    const inputRef = useRef()
  
     const handleInputChange = (e) => {
+
         setFormsDetails({...formsDetails, [e.target.name]: e.target.value })
         validateForm()
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formsDetails, formsDetails.nameValidation, formsDetails.emailValidation, formsDetails.languageValidation)
+        console.log(files, formsDetails, formsDetails.nameValidation, formsDetails.emailValidation, formsDetails.languageValidation)
         if(formsDetails.name === "" || formsDetails.email === "" || formsDetails.language === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formsDetails.email) == false) {
             toast("error","top-right", "test", "validation failed ")
             return false
@@ -96,9 +103,25 @@ const Forms = () => {
             ) : null
           }
         </Field>
+
+
+        <Field label="upload required files" required>
+          <FileUploadRoot maxFiles={2} name="upload" id="upload"  onChange={(e) => setFiles([...files, e.target.files[0]])}  accept={["image/png"]}>
+          <FileUploadTrigger asChild>
+            <Button variant="outline" size="sm" bg={{base:"purple.400", _dark: "purple.800"}} color={"white"}>
+              <HiUpload name="upload" id="upload" /> Upload file
+            </Button>
+          </FileUploadTrigger>
+          <FileUploadList name="upload" />
+        </FileUploadRoot>
+
+        </Field>
+
+
+
       </FieldsetContent>
 
-      <Button alignSelf="flex-start" onClick={handleSubmit}>
+      <Button bg={{base:"purple.400", _dark: "purple.800"}} color={"white"} alignSelf="flex-start" onClick={handleSubmit}>
         Submit
       </Button>
     </FieldsetRoot>
