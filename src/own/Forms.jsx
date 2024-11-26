@@ -1,6 +1,6 @@
 "use client"
 
-import { Button, Fieldset, FieldsetContent, FieldsetErrorText, FieldsetHelperText, FieldsetLegend, FieldsetRoot, Input, NativeSelectField, NativeSelectRoot, Stack, Text,} from "@chakra-ui/react"
+import { Button, CheckboxGroup, Fieldset, FieldsetContent, FieldsetHelperText, FieldsetLegend, FieldsetRoot, Flex, Input, NativeSelectField, NativeSelectRoot, Stack, Text} from "@chakra-ui/react"
 import {toaster, Toaster } from "../components/ui/toaster"
 
 import {Field} from "../components/ui/field"
@@ -12,9 +12,19 @@ import { HiUpload } from "react-icons/hi"
 import {FileUploadList,  FileUploadRoot,
   FileUploadTrigger,} from "../components/ui/file-upload"
 
+import {CheckboxCard} from "../components/ui/checkbox-card"
+
 
 
 const Forms = () => {
+
+  const foodCategories = [
+    { value: "veg", title: "Veg", description: "Vegetarian" },
+    { value: "non-veg", title: "Non-Veg", description: "Non Vegetarian" },
+    { value: "vegan", title: "Vegan", description: "Vegan" },
+  ]
+
+
     const [formsDetails, setFormsDetails] = useState({
         name: "",
         nameValidation: false,
@@ -27,6 +37,7 @@ const Forms = () => {
     })
 
     const [files, setFiles] = useState([])
+    const [foodCategoriesData, setFoodCategoriesData] = useState([])
     const inputRef = useRef()
  
     const handleInputChange = (e) => {
@@ -37,7 +48,7 @@ const Forms = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(files, formsDetails, formsDetails.nameValidation, formsDetails.emailValidation, formsDetails.languageValidation)
+        console.log(files, foodCategoriesData, formsDetails, formsDetails.nameValidation, formsDetails.emailValidation, formsDetails.languageValidation)
         if(formsDetails.name === "" || formsDetails.email === "" || formsDetails.language === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formsDetails.email) == false) {
             toast("error","top-right", "test", "validation failed ")
             return false
@@ -103,6 +114,22 @@ const Forms = () => {
             ) : null
           }
         </Field>
+
+        <CheckboxGroup onChange={(e)=> setFoodCategoriesData([...foodCategoriesData, e.target.value])}>
+          <Text textStyle="sm" fontWeight="medium">
+            Select your food preference
+          </Text>
+          <Flex gap="2">
+            {foodCategories.map((item) => (
+              <CheckboxCard
+                label={item.title}
+                description={item.description}
+                key={item.value}
+                value={item.value}
+              />
+            ))}
+          </Flex>
+        </CheckboxGroup>
 
 
         <Field label="upload required files" required>
