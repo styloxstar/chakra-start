@@ -13,6 +13,7 @@ import {FileUploadList,  FileUploadRoot,
   FileUploadTrigger,} from "../components/ui/file-upload"
 
 import {CheckboxCard} from "../components/ui/checkbox-card"
+import {PinInput} from "../components/ui/pin-input"
 
 
 
@@ -34,22 +35,23 @@ const Forms = () => {
         languageValidation: false,
         invalid: false,
         upload: "",
-        edit:""
+        edit:"",
     })
 
     const [files, setFiles] = useState([])
     const [foodCategoriesData, setFoodCategoriesData] = useState([])
+    const [masterPassword, setMasterPassword] = useState('')
     const inputRef = useRef()
  
     const handleInputChange = (e) => {
-
+        console.log("test",e.targe.name, e.target.value)
         setFormsDetails({...formsDetails, [e.target.name]: e.target.value })
-        validateForm()
+        // validateForm()
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(files, foodCategoriesData, formsDetails, formsDetails.nameValidation, formsDetails.emailValidation, formsDetails.languageValidation)
+        console.log(files, masterPassword, foodCategoriesData, formsDetails, formsDetails.nameValidation, formsDetails.emailValidation, formsDetails.languageValidation)
         if(formsDetails.name === "" || formsDetails.email === "" || formsDetails.language === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formsDetails.email) == false) {
             toast("error","top-right", "test", "validation failed ")
             return false
@@ -115,6 +117,11 @@ const Forms = () => {
               <Text as="p" color={"red.600"}>Proper Email is required</Text> 
             ) : null
           }
+        </Field>
+
+
+        <Field label="master password" required>
+          <PinInput name="password" id="password" onChange={(e)=> setMasterPassword(masterPassword+e.target.value)} invalid={masterPassword.trim()!== "" && masterPassword.length == 4 ? false : true}/>
         </Field>
 
         <Field label="Language" 
