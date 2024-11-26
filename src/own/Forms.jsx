@@ -14,6 +14,7 @@ import {FileUploadList,  FileUploadRoot,
 
 import {CheckboxCard} from "../components/ui/checkbox-card"
 import {PinInput} from "../components/ui/pin-input"
+import {Slider} from "../components/ui/slider"
 
 
 import {RadioCardRoot, RadioCardLabel, RadioCardItem} from "../components/ui/radio-card"
@@ -30,7 +31,7 @@ const Forms = () => {
     { value: "vegan", title: "Vegan", description: "Vegan" },
   ]
 
-  const ageCategories = [
+  const genderCategories = [
     { value: "male", title: "Male", description: "Backbone of world" },
     { value: "female", title: "Female", description: "Support role for world" },
     { value: "others", title: "Others", description: "You already know" },
@@ -47,12 +48,15 @@ const Forms = () => {
         invalid: false,
         upload: "",
         edit:"",
+        gender: "male",
+        age:"",
     })
 
     const [files, setFiles] = useState([])
     const [foodCategoriesData, setFoodCategoriesData] = useState([])
     const [masterPassword, setMasterPassword] = useState('')
-    const [ageData, setAgeData] = useState('male')
+    const [ageData, setAgeData] = useState(0)
+
     const inputRef = useRef()
  
     const handleInputChange = (e) => {
@@ -133,11 +137,12 @@ const Forms = () => {
 
 
           <Field required>
-          <RadioCardRoot defaultValue="male" onChange={(e)=> setAgeData(e.target.value)}>
+          <RadioCardRoot variant={"outline"} colorPalette={"purple"} defaultValue={formsDetails.gender} name="gender" onChange={(e)=> setFormsDetails({...formsDetails, gender: e.target.value })}>
             <RadioCardLabel>Select Gender</RadioCardLabel>
             <HStack align="stretch">
-              {ageCategories.map((item) => (
+              {genderCategories.map((item) => (
                 <RadioCardItem
+                
                   label={item.title}
                   description={item.description}
                   key={item.value}
@@ -148,6 +153,22 @@ const Forms = () => {
     </RadioCardRoot>
 
           </Field>
+
+
+         
+          <Field
+              label={`Select Age: ${ageData}`}
+              // invalid={!!errors.value?.length}
+              // errorText={errors.value?.[0]?.message}
+            >
+              <Slider
+                variant="outline"
+                colorPalette="purple"
+                width="full"
+                onValueChange={(e)=> { setAgeData(e.value[0])}}
+              />
+            </Field>
+          
 
         <Field label="master password" required>
           <PinInput name="password" id="password" onChange={(e)=> setMasterPassword(masterPassword+e.target.value)} invalid={masterPassword.trim()!== "" && masterPassword.length == 4 ? false : true}/>
