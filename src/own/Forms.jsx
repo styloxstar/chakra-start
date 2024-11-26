@@ -1,6 +1,6 @@
 "use client"
 
-import { Button, CheckboxGroup, Fieldset, FieldsetContent, FieldsetHelperText, FieldsetLegend, FieldsetRoot, Flex, Input, NativeSelectField, NativeSelectRoot, Stack, Text} from "@chakra-ui/react"
+import { Button, CheckboxGroup, EditableInput, EditablePreview, EditableRoot, Fieldset, FieldsetContent, FieldsetHelperText, FieldsetLegend, FieldsetRoot, Flex, Input, NativeSelectField, NativeSelectRoot, Stack, Text} from "@chakra-ui/react"
 import {toaster, Toaster } from "../components/ui/toaster"
 
 import {Field} from "../components/ui/field"
@@ -34,6 +34,7 @@ const Forms = () => {
         languageValidation: false,
         invalid: false,
         upload: "",
+        edit:""
     })
 
     const [files, setFiles] = useState([])
@@ -80,6 +81,31 @@ const Forms = () => {
             ) : null
           }
           {/* <Text as="p" color={"red.600"}>Name is required</Text> */}
+        </Field>
+
+          <EditableRoot
+            value={formsDetails.edit}
+            name="edit"
+            onChange={handleInputChange}
+            placeholder="Click to edit custom data"
+            bg= {{base: 'purple.400', _dark:'purple.800'}}
+            color={{base: 'black', _dark:'white'}}
+            _hover={{
+              bg: { base: 'purple.400', _dark:'purple.800'},
+              color: { base: 'black', _dark:'white'}
+            }}
+            rounded={"sm"}
+          >
+            <EditablePreview />
+            <EditableInput />
+          </EditableRoot>
+            {
+              formsDetails.edit.trim()== ""? (
+                <Text as="p" color={"red.600"}>edit is required</Text> 
+              ) : null
+            }
+        <Field>
+
         </Field>
 
         <Field label="Email address" invalid={formsDetails.email.trim()!== "" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formsDetails.email) ? false : true}>
