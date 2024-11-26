@@ -1,6 +1,6 @@
 "use client"
 
-import { Button, CheckboxGroup, EditableInput, EditablePreview, EditableRoot, Fieldset, FieldsetContent, FieldsetHelperText, FieldsetLegend, FieldsetRoot, Flex, Input, NativeSelectField, NativeSelectRoot, Stack, Text} from "@chakra-ui/react"
+import { Button, CheckboxGroup, EditableInput, EditablePreview, EditableRoot, EditableRootProvider, Fieldset, FieldsetContent, FieldsetHelperText, FieldsetLegend, FieldsetRoot, Flex, HStack, Input, NativeSelectField, NativeSelectRoot, Stack, Text} from "@chakra-ui/react"
 import {toaster, Toaster } from "../components/ui/toaster"
 
 import {Field} from "../components/ui/field"
@@ -16,6 +16,11 @@ import {CheckboxCard} from "../components/ui/checkbox-card"
 import {PinInput} from "../components/ui/pin-input"
 
 
+import {RadioCardRoot, RadioCardLabel, RadioCardItem} from "../components/ui/radio-card"
+
+
+
+
 
 const Forms = () => {
 
@@ -23,6 +28,12 @@ const Forms = () => {
     { value: "veg", title: "Veg", description: "Vegetarian" },
     { value: "non-veg", title: "Non-Veg", description: "Non Vegetarian" },
     { value: "vegan", title: "Vegan", description: "Vegan" },
+  ]
+
+  const ageCategories = [
+    { value: "male", title: "Male", description: "Backbone of world" },
+    { value: "female", title: "Female", description: "Support role for world" },
+    { value: "others", title: "Others", description: "You already know" },
   ]
 
 
@@ -41,6 +52,7 @@ const Forms = () => {
     const [files, setFiles] = useState([])
     const [foodCategoriesData, setFoodCategoriesData] = useState([])
     const [masterPassword, setMasterPassword] = useState('')
+    const [ageData, setAgeData] = useState('male')
     const inputRef = useRef()
  
     const handleInputChange = (e) => {
@@ -119,6 +131,23 @@ const Forms = () => {
           }
         </Field>
 
+
+          <Field required>
+          <RadioCardRoot defaultValue="male" onChange={(e)=> setAgeData(e.target.value)}>
+            <RadioCardLabel>Select Gender</RadioCardLabel>
+            <HStack align="stretch">
+              {ageCategories.map((item) => (
+                <RadioCardItem
+                  label={item.title}
+                  description={item.description}
+                  key={item.value}
+                  value={item.value}
+                />
+              ))}
+            </HStack>
+    </RadioCardRoot>
+
+          </Field>
 
         <Field label="master password" required>
           <PinInput name="password" id="password" onChange={(e)=> setMasterPassword(masterPassword+e.target.value)} invalid={masterPassword.trim()!== "" && masterPassword.length == 4 ? false : true}/>
