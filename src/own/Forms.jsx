@@ -57,6 +57,8 @@ const Forms = () => {
     const [masterPassword, setMasterPassword] = useState('')
     const [ageData, setAgeData] = useState(0)
 
+    const [editData, setEditData] = useState('')
+
     const inputRef = useRef()
  
     const handleInputChange = (e) => {
@@ -67,7 +69,7 @@ const Forms = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(files, masterPassword, foodCategoriesData, formsDetails, formsDetails.nameValidation, formsDetails.emailValidation, formsDetails.languageValidation)
+        // console.log(files,ageData, masterPassword, foodCategoriesData, formsDetails, formsDetails.nameValidation, formsDetails.emailValidation, formsDetails.languageValidation)
         if(formsDetails.name === "" || formsDetails.email === "" || formsDetails.language === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formsDetails.email) == false) {
             toast("error","top-right", "test", "validation failed ")
             return false
@@ -115,7 +117,7 @@ const Forms = () => {
             rounded={"sm"}
           >
             <EditablePreview />
-            <EditableInput />
+            <EditableInput onChange={(e)=> setEditData(e.target.value)} value={editData}/>
           </EditableRoot>
             {
               formsDetails.edit.trim()== ""? (
